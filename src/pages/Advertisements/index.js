@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 //Navigation
 import Sidebar from '../../components/Navigation/Sidebar';
 import Topbar from '../../components/Navigation/Topbar';
-
-import CardInfo from '../../components/Cards/Info';
-import ChartDonut from '../../components/Charts/Donut';
-import ChartLine from '../../components/Charts/Line';
 import PageHeading from '../../components/PageHeading';
 
 class Advertisements extends Component {

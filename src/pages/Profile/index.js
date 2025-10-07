@@ -5,14 +5,7 @@ import {Helmet} from "react-helmet";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Center from 'react-center';
 import axios from 'axios';
-
-import BlueButton from '../../components/Clients/BlueButton';
-import WhiteButton from '../../components/Clients/WhiteButton';
-import Footer from '../../components/Clients/Footer';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { createVCard } from 'vcf';
-
-
+import {faLocationDot} from '@fortawesome/free-solid-svg-icons';
 
 
 class Profile extends React.Component {
@@ -343,7 +336,7 @@ class Profile extends React.Component {
                 </div>
                 
                 <div className={this.state.socialMediaCounter < 3 ? 'col-12 p-0 d-flex justify-content-start align-items-start':  'col-12 p-0 d-flex justify-content-between align-items-start'} >
-                    {this.state.instagramLink !== "=" &&
+                    {this.state.instagramLink !== "" &&
                       <div onClick={() => window.open(this.state.instagramLink, '_blank')} className='d-flex align-items-center justify-content-center' style={{backgroundColor:this.state.theme_color,boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",height:'55px', width:'55px',borderRadius:'10px'}}>
                         <i className="fab fa-instagram font-size-36" style={{color:'white'}}></i>
                       </div>

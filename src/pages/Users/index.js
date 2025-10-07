@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 //Navigation
 import Sidebar from '../../components/Navigation/Sidebar';
 import Topbar from '../../components/Navigation/Topbar';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import CardInfo from '../../components/Cards/Info';
-import ChartDonut from '../../components/Charts/Donut';
-import ChartLine from '../../components/Charts/Line';
 import PageHeading from '../../components/PageHeading';
 
 class Users extends Component {
