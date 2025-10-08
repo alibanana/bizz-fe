@@ -1,23 +1,15 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 
 //Pages
-import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
-import Cards from "./pages/Cards";
-import Charts from "./pages/Charts";
 import Users from "./pages/Users";
-import Earnings from "./pages/Earnings";
-import Transactions from "./pages/Transactions";
-import Advertisements from "./pages/Advertisements";
 import HomePage from "./pages/Clients/home";
-import IdentityVerification from "./pages/IdentityVerification";
 import Profile from "./pages/Profile";
-import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
-
+import {IsUserRedirect, ProtectedRoute} from "./helpers/routes";
 
 
 const Routes = () => (

@@ -2,11 +2,9 @@ import React from 'react';
 import '../../assets/css/Clients/client.css';
 import '../../assets/css/Clients/home.css';
 import {Helmet} from "react-helmet";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -15,9 +13,6 @@ import NavigationBar from '../../components/Clients/Navbar';
 import BlueButton from '../../components/Clients/BlueButton';
 import WhiteButton from '../../components/Clients/WhiteButton';
 import Footer from '../../components/Clients/Footer';
-
-
-
 
 
 class HomePage extends React.Component {
