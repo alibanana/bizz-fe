@@ -124,7 +124,7 @@ class SignIn extends Component {
                     <div className="p-5">
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 mb-4">Welcome To Bizz!</h1>
-                        {this.state.errorMessage != '' &&
+                        {this.state.errorMessage !== '' &&
 
                           <p style={{color: 'red'}}>{this.state.errorMessage}</p>
 
