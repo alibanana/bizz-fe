@@ -61,8 +61,8 @@ class Topbar extends Component {
 
               {/* <!-- Nav Item - User Information --> */}
               <li className="nav-item dropdown no-arrow">
-                <button className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{
+                <button className="nav-link dropdown-toggle" id="userDropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style={{
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer'
