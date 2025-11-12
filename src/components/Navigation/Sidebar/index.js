@@ -1,31 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { clickMenuOpen } from '../../../redux/actions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {clickMenuOpen} from '../../../redux/actions';
 
 class Sidebar extends Component {
-  // componentDidMount() {
-  //   document.getElementById('body').className = 'page-top';
-  // }
-  // state = {
-  //   sidebarToggled: false,
-  // }
-
-  // handleSideBarToggle() {
-  //   if (this.sidebarToogled === true) {
-  //     this.setState({ sidebarToggled: !this.state.sidebarToggled });
-  //     document.getElementById('body').className = 'page-top sidebar-toggled';
-  //   } else {
-  //     this.setState({ sidebarToggled: !this.state.sidebarToggled });
-  //     document.getElementById('body').className = 'page-top';
-  //   }
-
-  // }
-
 
   constructor(){
     super()
@@ -63,7 +45,7 @@ class Sidebar extends Component {
 
 
     const response = await axios.put('https://bizz-bo-prod.up.railway.app/api/change-password/'+ localStorage.getItem("uid"), data, { headers: headers });
-    if(response.status == 200){
+    if(response.status === 200){
       this.setState({
         errorMessage :''
       })
@@ -93,7 +75,7 @@ class Sidebar extends Component {
         {/* <!-- Sidebar - Brand --> */}
         <p className="sidebar-brand d-flex align-items-center justify-content-center" >
           <div className="sidebar-brand-icon rotate-n-15">
-            <img src="/images/BIZZ_NAME_LOGO_WHITE.png" class="img-fluid" style={{width:'50%'}} />
+            <img src="/images/BIZZ_NAME_LOGO_WHITE.png" class="img-fluid" style={{width:'50%'}} alt="Bizz"/>
           </div>
         </p>
 
@@ -108,7 +90,7 @@ class Sidebar extends Component {
         </li>
 
         {/* <!-- Nav Item - Users --> */}
-        {localStorage.getItem("ur") == "admin" 
+        {localStorage.getItem("ur") === "admin"
         &&
         <li className="nav-item">
           <Link className="nav-link" to="/dashboard/users">

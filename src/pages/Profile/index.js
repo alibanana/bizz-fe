@@ -94,7 +94,7 @@ class Profile extends React.Component {
           tableTalkerLink: response.data.content.TableTalkerLink,
         })
 
-        if (this.state.userRole == 'table-talker') {
+        if (this.state.userRole === 'table-talker') {
           window.location.href = this.state.tableTalkerLink
           return
         }
@@ -233,7 +233,7 @@ class Profile extends React.Component {
               {/* START OF PROFILE*/}
               <div className='row m-0'>
                 <div className='col-12 p-0'>
-                  <img src={this.state.displayPicture} className='img-fluid' id="profile-picture" alt="Profile Picture"
+                  <img src={this.state.displayPicture} className='img-fluid' id="profile-picture" alt="Profile"
                        style={{height: '320px', width: '100%', objectFit: 'cover'}}/>
                   {this.state.theme === "black-and-white" ?
                     <img src="/images/Wave_Border.png" className='img-fluid' alt="Wave"
@@ -437,7 +437,8 @@ class Profile extends React.Component {
                   <img src="/images/BIZZ_NAME_LOGO.png" className='img-fluid' alt="Bizz Logo" style={{width: '25%'}}/>
                 </div>
                 <div className='col-12 p-0 mb-3 d-flex align-items-center justify-content-center'>
-                  <a href="http://smartbizz.id/" target="_blank" className="font-size-18 raleway-semibold mb-1"
+                  <a href="http://smartbizz.id/" target="_blank" rel="noreferrer"
+                     className="font-size-18 raleway-semibold mb-1"
                      style={{color: '#252525', textDecoration: 'underline'}}>POWERED BY &copy; BIZZ 2023</a>
                 </div>
               </div>

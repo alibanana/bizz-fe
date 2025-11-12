@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import '../../assets/css/Clients/navbar.css';
 import '../../assets/css/Clients/client.css';
 
-import { Navbar, Nav } from 'react-bootstrap';
-
-
-
+import {Nav, Navbar} from 'react-bootstrap';
 
 function NavigationBar() {
   return (

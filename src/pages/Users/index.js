@@ -11,7 +11,7 @@ import PageHeading from '../../components/PageHeading';
 class Users extends Component {
   componentWillMount() {
     document.getElementById('body').className = 'page-top'
-    if(localStorage.getItem("ur") != "admin"){
+    if(localStorage.getItem("ur") !== "admin"){
       window.location.href = "/dashboard/profile/"+localStorage.getItem("uid");
 
     }
@@ -57,7 +57,7 @@ class Users extends Component {
 
 
     const response = await axios.post('https://bizz-bo-prod.up.railway.app/api/signup', data, { headers: headers });
-    if(response.status == 200){
+    if(response.status === 200){
       this.setState({
         errorMessage :''
       })
@@ -95,7 +95,7 @@ class Users extends Component {
   
       // Handle the response
       // Assuming the response contains data field with relevant information
-      if(response.status == 200){
+      if(response.status === 200){
         this.setState({
           users : response.data.content,
         })
@@ -135,7 +135,7 @@ class Users extends Component {
   
       // Handle the response
       // Assuming the response contains data field with relevant information
-      if(response.status == 200){
+      if(response.status === 200){
         this.notify('Delete successfull!..')
 
         this.getUsers()

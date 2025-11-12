@@ -426,7 +426,7 @@ class Dashboard extends Component {
                         </div>
                         <div className='pt-2'>
                           <img style={{width: '50%', height: '350px', objectFit: 'contain'}}
-                               src={this.state.displayPicture} alt="Display Picture" className="img-thumbnail"/>
+                               src={this.state.displayPicture} alt="User Profile" className="img-thumbnail"/>
                         </div>
                         <div className='pt-3'>
                           {this.state.isLoading === true ?

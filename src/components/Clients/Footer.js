@@ -35,7 +35,7 @@ function Footer() {
       <div className='col-lg-3 col-xs-12 p-0 mt-5 d-flex flex-row justify-content-center align-items-start'>
         <div>
           <p className="font-size-24 lato-bold mb-3" style={{color: '#FFFFFF'}}>Get in touch</p>
-          <a href={whatsappUrl} target="_blank" className="font-size-18 lato-regular mb-3"
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="font-size-18 lato-regular mb-3"
              style={{color: '#FFFFFF', cursor: 'pointer'}}>Contact Us</a>
         </div>
       </div>
