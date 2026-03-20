@@ -8,6 +8,7 @@ import axios from 'axios';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Helmet} from "react-helmet";
+import { API_URL } from '../../config';
 
 class Dashboard extends Component {
 
@@ -88,7 +89,7 @@ class Dashboard extends Component {
         'accept': '*/*',
       };
 
-      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/' + this.props.match.params.id, {headers: headers});
+      const response = await axios.get(API_URL + '/api/user/' + this.props.match.params.id, {headers: headers});
 
       // Handle the response
       // Assuming the response contains data field with relevant information
@@ -144,7 +145,7 @@ class Dashboard extends Component {
       }
 
 
-      const response = await axios.put('https://bizz-bo-prod.up.railway.app/api/user/update-table-talker/' + this.props.match.params.id, data, {headers: headers});
+      const response = await axios.put(API_URL + '/api/user/update-table-talker/' + this.props.match.params.id, data, {headers: headers});
       if (response.status === 200) {
         this.setState({
           errorMessage: ''
@@ -190,7 +191,7 @@ class Dashboard extends Component {
       }
 
 
-      const response = await axios.put('https://bizz-bo-prod.up.railway.app/api/user/update/' + this.props.match.params.id, data, {headers: headers});
+      const response = await axios.put(API_URL + '/api/user/update/' + this.props.match.params.id, data, {headers: headers});
       if (response.status === 200) {
         this.setState({
           errorMessage: ''
@@ -217,7 +218,7 @@ class Dashboard extends Component {
       const formData = new FormData();
       formData.append("data", file);
 
-      const response = await axios.post("https://bizz-bo-prod.up.railway.app/api/user/update-image/" + this.props.match.params.id, formData, {
+      const response = await axios.post(API_URL + "/api/user/update-image/" + this.props.match.params.id, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           'accept': '*/*',
@@ -261,7 +262,7 @@ class Dashboard extends Component {
       };
 
 
-      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/websites/' + this.props.match.params.id, {headers: headers});
+      const response = await axios.get(API_URL + '/api/user/websites/' + this.props.match.params.id, {headers: headers});
 
 
       // Handle the response
@@ -297,7 +298,7 @@ class Dashboard extends Component {
       };
 
 
-      const response = await axios.delete('https://bizz-bo-prod.up.railway.app/api/website/delete/' + wid, {headers: headers});
+      const response = await axios.delete(API_URL + '/api/website/delete/' + wid, {headers: headers});
 
 
       // Handle the response
@@ -337,7 +338,7 @@ class Dashboard extends Component {
       }
 
 
-      const response = await axios.post('https://bizz-bo-prod.up.railway.app/api/website/create/' + this.props.match.params.id, data, {headers: headers});
+      const response = await axios.post(API_URL + '/api/website/create/' + this.props.match.params.id, data, {headers: headers});
       if (response.status === 200) {
         this.setState({
           errorMessage: ''

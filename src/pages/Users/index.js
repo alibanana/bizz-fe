@@ -7,6 +7,7 @@ import axios from 'axios';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageHeading from '../../components/PageHeading';
+import { API_URL } from '../../config';
 
 class Users extends Component {
   componentWillMount() {
@@ -56,7 +57,7 @@ class Users extends Component {
     }
 
 
-    const response = await axios.post('https://bizz-bo-prod.up.railway.app/api/signup', data, { headers: headers });
+    const response = await axios.post(API_URL + '/api/signup', data, { headers: headers });
     if(response.status === 200){
       this.setState({
         errorMessage :''
@@ -90,7 +91,7 @@ class Users extends Component {
       };
   
   
-      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/all', { headers: headers });
+      const response = await axios.get(API_URL + '/api/user/all', { headers: headers });
 
   
       // Handle the response
@@ -130,7 +131,7 @@ class Users extends Component {
       };
   
   
-      const response = await axios.delete('https://bizz-bo-prod.up.railway.app/api/user/delete/'+ uid, { headers: headers });
+      const response = await axios.delete(API_URL + '/api/user/delete/'+ uid, { headers: headers });
 
   
       // Handle the response
@@ -174,7 +175,7 @@ class Users extends Component {
         'email': email
       };
   
-      const response = await axios.put('https://bizz-bo-prod.up.railway.app/api/reset-password', data, { headers: headers });
+      const response = await axios.put(API_URL + '/api/reset-password', data, { headers: headers });
 
       // Handle the response
       // Assuming the response contains a data field with relevant information

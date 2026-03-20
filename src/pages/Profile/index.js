@@ -7,7 +7,7 @@ import Center from 'react-center';
 import axios from 'axios';
 import {faLocationDot} from '@fortawesome/free-solid-svg-icons';
 import WhatsAppButton from "../../components/Buttons/SimpleWhatsAppButton";
-
+import { API_URL } from '../../config';
 
 class Profile extends React.Component {
 
@@ -71,7 +71,7 @@ class Profile extends React.Component {
         'accept': '*/*',
       };
 
-      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/' + this.props.match.params.id, {headers: headers});
+      const response = await axios.get(API_URL + '/api/user/' + this.props.match.params.id, {headers: headers});
 
       // Handle the response
       // Assuming the response contains data field with relevant information
@@ -149,7 +149,7 @@ class Profile extends React.Component {
       };
 
 
-      const response = await axios.get('https://bizz-bo-prod.up.railway.app/api/user/websites/' + this.props.match.params.id, {headers: headers});
+      const response = await axios.get(API_URL + '/api/user/websites/' + this.props.match.params.id, {headers: headers});
 
 
       // Handle the response

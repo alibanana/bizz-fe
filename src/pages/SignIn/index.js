@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import {Helmet} from "react-helmet";
 import Cookies from "universal-cookie"
+import { API_URL } from '../../config';
 
 class SignIn extends Component {
 
@@ -58,7 +59,7 @@ class SignIn extends Component {
           password: this.state.password
         }
 
-        const response = await axios.post('https://bizz-bo-prod.up.railway.app/api/login', data, {headers: headers});
+        const response = await axios.post(API_URL + '/api/login', data, {headers: headers});
 
 
         // Handle the response
