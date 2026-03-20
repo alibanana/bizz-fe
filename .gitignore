@@ -55,3 +55,9 @@ package-lock.json
 *.local
 .tmp/
 .temp/
+
+# Claude
+CLAUDE.md
+.claude/settings.json
+.claude/settings.local.json
+.mcp.json

@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {clickMenuOpen} from '../../../redux/actions';
+import { API_URL } from '../../../config';
 
 class Sidebar extends Component {
 
@@ -44,7 +45,7 @@ class Sidebar extends Component {
     }
 
 
-    const response = await axios.put('https://bizz-bo-prod.up.railway.app/api/change-password/'+ localStorage.getItem("uid"), data, { headers: headers });
+    const response = await axios.put(API_URL + '/api/change-password/'+ localStorage.getItem("uid"), data, { headers: headers });
     if(response.status === 200){
       this.setState({
         errorMessage :''
