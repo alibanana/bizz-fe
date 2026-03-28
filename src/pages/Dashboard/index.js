@@ -39,6 +39,14 @@ class Dashboard extends Component {
       tiktokLink: null,
       twitterLink: null,
       facebookLink: null,
+      youtubeLink: null,
+      threadLink: null,
+      githubLink: null,
+      snapchatLink: null,
+      pinterestLink: null,
+      patreonLink: null,
+      twitchLink: null,
+      spotifyLink: null,
       submitFailed: false,
       isLoading: false,
       image: null,
@@ -109,6 +117,14 @@ class Dashboard extends Component {
           tiktokLink: response.data.content.TiktokLink,
           twitterLink: response.data.content.TwitterLink,
           facebookLink: response.data.content.FacebookLink,
+          youtubeLink: response.data.content.YoutubeLink,
+          threadLink: response.data.content.ThreadLink,
+          githubLink: response.data.content.GithubLink,
+          snapchatLink: response.data.content.SnapchatLink,
+          pinterestLink: response.data.content.PinterestLink,
+          patreonLink: response.data.content.PatreonLink,
+          twitchLink: response.data.content.TwitchLink,
+          spotifyLink: response.data.content.SpotifyLink,
           tableTalkerLink: response.data.content.TableTalkerLink,
         })
       }
@@ -187,7 +203,15 @@ class Dashboard extends Component {
         "LinkedinLink": this.state.linkedinLink,
         "TiktokLink": this.state.tiktokLink,
         "TwitterLink": this.state.twitterLink,
-        "FacebookLink": this.state.facebookLink
+        "FacebookLink": this.state.facebookLink,
+        "YoutubeLink": this.state.youtubeLink,
+        "ThreadLink": this.state.threadLink,
+        "GithubLink": this.state.githubLink,
+        "SnapchatLink": this.state.snapchatLink,
+        "PinterestLink": this.state.pinterestLink,
+        "PatreonLink": this.state.patreonLink,
+        "TwitchLink": this.state.twitchLink,
+        "SpotifyLink": this.state.spotifyLink,
       }
 
 
@@ -558,6 +582,70 @@ class Dashboard extends Component {
                           <input type="text" value={this.state.facebookLink} onChange={this.onChange}
                                  name="facebookLink" className="form-control"
                                  placeholder="e.g. https://facebook.com/johndoe" aria-label="facebook_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>YouTube Link</label> <br></br>
+                          <input type="text" value={this.state.youtubeLink} onChange={this.onChange}
+                                 name="youtubeLink" className="form-control"
+                                 placeholder="e.g. https://www.youtube.com/channel/johndoe" aria-label="youtube_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>Threads Link</label> <br></br>
+                          <input type="text" value={this.state.threadLink} onChange={this.onChange}
+                                 name="threadLink" className="form-control"
+                                 placeholder="e.g. https://www.threads.net/@johndoe" aria-label="thread_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>GitHub Link</label> <br></br>
+                          <input type="text" value={this.state.githubLink} onChange={this.onChange}
+                                 name="githubLink" className="form-control"
+                                 placeholder="e.g. https://github.com/johndoe" aria-label="github_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>Snapchat Link</label> <br></br>
+                          <input type="text" value={this.state.snapchatLink} onChange={this.onChange}
+                                 name="snapchatLink" className="form-control"
+                                 placeholder="e.g. https://www.snapchat.com/add/johndoe" aria-label="snapchat_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>Pinterest Link</label> <br></br>
+                          <input type="text" value={this.state.pinterestLink} onChange={this.onChange}
+                                 name="pinterestLink" className="form-control"
+                                 placeholder="e.g. https://www.pinterest.com/johndoe" aria-label="pinterest_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>Patreon Link</label> <br></br>
+                          <input type="text" value={this.state.patreonLink} onChange={this.onChange}
+                                 name="patreonLink" className="form-control"
+                                 placeholder="e.g. https://www.patreon.com/johndoe" aria-label="patreon_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>Twitch Link</label> <br></br>
+                          <input type="text" value={this.state.twitchLink} onChange={this.onChange}
+                                 name="twitchLink" className="form-control"
+                                 placeholder="e.g. https://www.twitch.tv/johndoe" aria-label="twitch_link"/>
+                        </div>
+                      </div>
+                      <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
+                        <div>
+                          <label>Spotify Link</label> <br></br>
+                          <input type="text" value={this.state.spotifyLink} onChange={this.onChange}
+                                 name="spotifyLink" className="form-control"
+                                 placeholder="e.g. https://open.spotify.com/user/johndoe" aria-label="spotify_link"/>
                         </div>
                       </div>
                       {/* END OF SOCIAL MEDIA SECTION */}
