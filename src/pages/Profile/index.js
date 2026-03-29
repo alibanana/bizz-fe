@@ -28,6 +28,14 @@ class Profile extends React.Component {
       tiktokLink: '',
       twitterLink: '',
       facebookLink: '',
+      youtubeLink: '',
+      threadsLink: '',
+      githubLink: '',
+      snapchatLink: '',
+      pinterestLink: '',
+      patreonLink: '',
+      twitchLink: '',
+      spotifyLink: '',
       isLoading: false,
       websites: [],
       websiteName: '',
@@ -45,7 +53,9 @@ class Profile extends React.Component {
   }
 
   countSocialMedia = async () => {
-    const {instagramLink, linkedinLink, twitterLink, facebookLink, tiktokLink} = this.state;
+    const {instagramLink, linkedinLink, twitterLink, facebookLink, tiktokLink,
+      youtubeLink, threadsLink, githubLink, snapchatLink,
+      pinterestLink, patreonLink, twitchLink, spotifyLink} = this.state;
     let counter = 0;
 
     if (instagramLink) counter++;
@@ -53,6 +63,14 @@ class Profile extends React.Component {
     if (twitterLink) counter++;
     if (facebookLink) counter++;
     if (tiktokLink) counter++;
+    if (youtubeLink) counter++;
+    if (threadsLink) counter++;
+    if (githubLink) counter++;
+    if (snapchatLink) counter++;
+    if (pinterestLink) counter++;
+    if (patreonLink) counter++;
+    if (twitchLink) counter++;
+    if (spotifyLink) counter++;
 
     this.setState({socialMediaCounter: counter});
     console.log(this.state.socialMediaCounter);
@@ -91,6 +109,14 @@ class Profile extends React.Component {
           tiktokLink: response.data.content.TiktokLink,
           twitterLink: response.data.content.TwitterLink,
           facebookLink: response.data.content.FacebookLink,
+          youtubeLink: response.data.content.YoutubeLink,
+          threadsLink: response.data.content.ThreadsLink,
+          githubLink: response.data.content.GithubLink,
+          snapchatLink: response.data.content.SnapchatLink,
+          pinterestLink: response.data.content.PinterestLink,
+          patreonLink: response.data.content.PatreonLink,
+          twitchLink: response.data.content.TwitchLink,
+          spotifyLink: response.data.content.SpotifyLink,
           tableTalkerLink: response.data.content.TableTalkerLink,
         })
 
@@ -316,15 +342,23 @@ class Profile extends React.Component {
               {/* END OF PROFILE*/}
 
               {/* START OF SOCIAL MEDIA*/}
-              {(this.state.instagramLink !== "" || this.state.twitterLink !== "" || this.state.linkedinLink !== "" || this.state.tiktokLink !== "") &&
+              {(this.state.instagramLink !== "" || this.state.twitterLink !== "" || this.state.linkedinLink !== "" ||
+                  this.state.tiktokLink !== "" || this.state.facebookLink !== "" || this.state.youtubeLink !== "" ||
+                  this.state.threadsLink !== "" || this.state.githubLink !== "" || this.state.snapchatLink !== "" ||
+                  this.state.pinterestLink !== "" || this.state.patreonLink !== "" || this.state.twitchLink !== "" ||
+                  this.state.spotifyLink !== "") &&
                 <div className='row m-0 px-4 py-4'>
                   <div className='col-12 p-0 mb-3'>
                     <p className="font-size-24 raleway-semibold mb-1"
                        style={{color: '#252525', textDecoration: 'underline'}}>SOCIAL MEDIA</p>
                   </div>
 
-                  <div
-                    className={this.state.socialMediaCounter < 3 ? 'col-12 p-0 d-flex justify-content-start align-items-start' : 'col-12 p-0 d-flex justify-content-between align-items-start'}>
+                  <div className='col-12 p-0' style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(5, 55px)',
+                    justifyContent: 'space-between',
+                    rowGap: '18px'
+                  }}>
                     {this.state.instagramLink !== "" &&
                       <div onClick={() => window.open(this.state.instagramLink, '_blank')}
                            className='d-flex align-items-center justify-content-center' style={{
@@ -339,7 +373,7 @@ class Profile extends React.Component {
                     }
                     {this.state.twitterLink !== "" &&
                       <div onClick={() => window.open(this.state.twitterLink, '_blank')}
-                           className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'}
+                           className='d-flex align-items-center justify-content-center'
                            style={{
                              backgroundColor: this.state.theme_color,
                              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
@@ -352,7 +386,7 @@ class Profile extends React.Component {
                     }
                     {this.state.linkedinLink !== "" &&
                       <div onClick={() => window.open(this.state.linkedinLink, '_blank')}
-                           className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'}
+                           className='d-flex align-items-center justify-content-center'
                            style={{
                              backgroundColor: this.state.theme_color,
                              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
@@ -365,7 +399,7 @@ class Profile extends React.Component {
                     }
                     {this.state.tiktokLink !== "" &&
                       <div onClick={() => window.open(this.state.tiktokLink, '_blank')}
-                           className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'}
+                           className='d-flex align-items-center justify-content-center'
                            style={{
                              backgroundColor: this.state.theme_color,
                              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
@@ -373,14 +407,12 @@ class Profile extends React.Component {
                              width: '55px',
                              borderRadius: '10px'
                            }}>
-                        <img src="/images/icons/tiktok_icon_small.png" className='img-fluid' alt="Tiktok"
-                             style={{width: '25px'}}/>
-
+                        <i className="fab fa-tiktok font-size-36" style={{color: 'white'}}></i>
                       </div>
                     }
                     {this.state.facebookLink !== "" &&
                       <div onClick={() => window.open(this.state.facebookLink, '_blank')}
-                           className={this.state.socialMediaCounter < 3 ? 'ml-3 d-flex align-items-center justify-content-center' : 'd-flex align-items-center justify-content-center'}
+                           className='d-flex align-items-center justify-content-center'
                            style={{
                              backgroundColor: this.state.theme_color,
                              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
@@ -391,9 +423,112 @@ class Profile extends React.Component {
                         <i className="fab fa-facebook-f font-size-36" style={{color: 'white'}}></i>
                       </div>
                     }
+                    {this.state.youtubeLink !== "" &&
+                      <div onClick={() => window.open(this.state.youtubeLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-youtube font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
+                    {this.state.threadsLink !== "" &&
+                      <div onClick={() => window.open(this.state.threadsLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-threads font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
+                    {this.state.githubLink !== "" &&
+                      <div onClick={() => window.open(this.state.githubLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-github font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
+                    {this.state.snapchatLink !== "" &&
+                      <div onClick={() => window.open(this.state.snapchatLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-snapchat-ghost font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
+                    {this.state.pinterestLink !== "" &&
+                      <div onClick={() => window.open(this.state.pinterestLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-pinterest font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
+                    {this.state.patreonLink !== "" &&
+                      <div onClick={() => window.open(this.state.patreonLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-patreon font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
+                    {this.state.twitchLink !== "" &&
+                      <div onClick={() => window.open(this.state.twitchLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-twitch font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
+                    {this.state.spotifyLink !== "" &&
+                      <div onClick={() => window.open(this.state.spotifyLink, '_blank')}
+                           className='d-flex align-items-center justify-content-center'
+                           style={{
+                             backgroundColor: this.state.theme_color,
+                             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+                             height: '55px',
+                             width: '55px',
+                             borderRadius: '10px'
+                           }}>
+                        <i className="fab fa-spotify font-size-36" style={{color: 'white'}}></i>
+                      </div>
+                    }
                   </div>
                 </div>
-
               }
               {/* END OF SOCIAL MEDIA*/}
 
