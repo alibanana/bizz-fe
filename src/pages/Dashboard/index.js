@@ -40,7 +40,7 @@ class Dashboard extends Component {
       twitterLink: null,
       facebookLink: null,
       youtubeLink: null,
-      threadLink: null,
+      threadsLink: null,
       githubLink: null,
       snapchatLink: null,
       pinterestLink: null,
@@ -118,7 +118,7 @@ class Dashboard extends Component {
           twitterLink: response.data.content.TwitterLink,
           facebookLink: response.data.content.FacebookLink,
           youtubeLink: response.data.content.YoutubeLink,
-          threadLink: response.data.content.ThreadLink,
+          threadsLink: response.data.content.ThreadsLink,
           githubLink: response.data.content.GithubLink,
           snapchatLink: response.data.content.SnapchatLink,
           pinterestLink: response.data.content.PinterestLink,
@@ -205,7 +205,7 @@ class Dashboard extends Component {
         "TwitterLink": this.state.twitterLink,
         "FacebookLink": this.state.facebookLink,
         "YoutubeLink": this.state.youtubeLink,
-        "ThreadLink": this.state.threadLink,
+        "ThreadsLink": this.state.threadsLink,
         "GithubLink": this.state.githubLink,
         "SnapchatLink": this.state.snapchatLink,
         "PinterestLink": this.state.pinterestLink,
@@ -595,8 +595,8 @@ class Dashboard extends Component {
                       <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
                         <div>
                           <label>Threads Link</label> <br></br>
-                          <input type="text" value={this.state.threadLink} onChange={this.onChange}
-                                 name="threadLink" className="form-control"
+                          <input type="text" value={this.state.threadsLink} onChange={this.onChange}
+                                 name="threadsLink" className="form-control"
                                  placeholder="e.g. https://www.threads.net/@johndoe" aria-label="thread_link"/>
                         </div>
                       </div>
