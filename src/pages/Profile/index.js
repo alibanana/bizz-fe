@@ -407,9 +407,7 @@ class Profile extends React.Component {
                              width: '55px',
                              borderRadius: '10px'
                            }}>
-                        <img src="/images/icons/tiktok_icon_small.png" className='img-fluid' alt="Tiktok"
-                             style={{width: '25px'}}/>
-
+                        <i className="fab fa-tiktok font-size-36" style={{color: 'white'}}></i>
                       </div>
                     }
                     {this.state.facebookLink !== "" &&
