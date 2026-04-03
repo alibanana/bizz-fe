@@ -19,6 +19,7 @@ class Profile extends React.Component {
       theme: '',
       name: '',
       occupation: '',
+      bio: '',
       phone: '',
       linkToWhatsapp: false,
       email: '',
@@ -100,6 +101,7 @@ class Profile extends React.Component {
           theme: response.data.content.Theme,
           name: response.data.content.Name,
           occupation: response.data.content.Occupation,
+          bio: response.data.content.Bio,
           phone: response.data.content.Phone,
           linkToWhatsapp: response.data.content.LinkToWhatsapp,
           email: response.data.content.DisplayedEmail,
@@ -278,9 +280,21 @@ class Profile extends React.Component {
                   }
                 </div>
                 <div className='col-12 px-4 pb-5 pt-2'>
-                  <p className="font-size-24 raleway-bold mb-1" style={{color: '#252525'}}>{this.state.name}</p>
-                  <p className="font-size-18 lato-regular pb-2"
-                     style={{color: '#252525', fontStyle: 'italic'}}>{this.state.occupation}</p>
+                  {[{
+                    content: this.state.name, classes: "font-size-24 raleway-bold", style: {color: '#252525'}
+                  }, this.state.occupation && {
+                    content: this.state.occupation,
+                    classes: "font-size-18 lato-regular",
+                    style: {color: '#252525', fontStyle: 'italic'}
+                  }, this.state.bio && {
+                    content: this.state.bio, classes: "font-size-16 lato-regular", style: {color: '#252525'}
+                  }].filter(Boolean).map((section, index, array) => (<p
+                    key={index}
+                    className={`${section.classes} ${index === array.length - 1 ? 'pb-2' : 'mb-1'}`}
+                    style={section.style}
+                  >
+                    {section.content}
+                  </p>))}
 
                   <div className='mt-4'>
                     <div className='d-flex align-items-center justify-content-start'>

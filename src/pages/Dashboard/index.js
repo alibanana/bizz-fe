@@ -30,6 +30,7 @@ class Dashboard extends Component {
       theme: '',
       name: null,
       occupation: null,
+      bio: null,
       phone: null,
       linkToWhatsapp: false,
       email: null,
@@ -108,6 +109,7 @@ class Dashboard extends Component {
           theme: response.data.content.Theme,
           name: response.data.content.Name,
           occupation: response.data.content.Occupation,
+          bio: response.data.content.Bio,
           phone: response.data.content.Phone,
           linkToWhatsapp: response.data.content.LinkToWhatsapp,
           email: response.data.content.DisplayedEmail,
@@ -195,6 +197,7 @@ class Dashboard extends Component {
         "Theme": this.state.theme,
         "Name": this.state.name,
         "Occupation": this.state.occupation,
+        "Bio": this.state.bio,
         "Phone": this.state.phone,
         "LinkToWhatsApp": this.state.linkToWhatsapp,
         "Email": this.state.email,
@@ -503,6 +506,16 @@ class Dashboard extends Component {
                           <label>Occupation</label> <br></br>
                           <input type="text" value={this.state.occupation} onChange={this.onChange} name="occupation"
                                  className="form-control" placeholder="e.g. John Doe" aria-label="full_name"/>
+                        </div>
+                      </div>
+
+                      <div className='col-12 pt-3'>
+                        <div>
+                          <label>Bio</label> <br></br>
+                          <textarea className="form-control" value={this.state.bio} onChange={this.onChange}
+                                    name="bio"
+                                    placeholder="e.g. Just someone figuring things out as I go. I like learning new stuff, exploring different interests, and keeping life a bit unpredictable. Always open to new ideas and good conversations."
+                                    aria-label="bio"></textarea>
                         </div>
                       </div>
 
