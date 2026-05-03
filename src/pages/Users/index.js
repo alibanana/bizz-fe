@@ -294,7 +294,11 @@ class Users extends Component {
                                   <td>{e.ID}</td>
                                   <td>{e.Name}</td>
                                   <td>{e.Email}</td>
-                                  <td>{e.Phone}</td>
+                                  <td>
+                                    {e.PhoneNumbers && e.PhoneNumbers.length > 0
+                                      ? e.PhoneNumbers.map(p => p.Label ? `${p.Number} (${p.Label})` : p.Number).join(', ')
+                                      : '-'}
+                                  </td>
                                   <td>{e.CreatedAt}</td>
                                   <td>
                                     <div className='d-flex'>

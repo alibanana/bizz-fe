@@ -20,8 +20,7 @@ class Profile extends React.Component {
       name: '',
       occupation: '',
       bio: '',
-      phone: '',
-      linkToWhatsapp: false,
+      phoneNumbers: [],
       email: '',
       address: '',
       instagramLink: '',
@@ -102,8 +101,7 @@ class Profile extends React.Component {
           name: response.data.content.Name,
           occupation: response.data.content.Occupation,
           bio: response.data.content.Bio,
-          phone: response.data.content.Phone,
-          linkToWhatsapp: response.data.content.LinkToWhatsapp,
+          phoneNumbers: response.data.content.PhoneNumbers ?? [],
           email: response.data.content.DisplayedEmail,
           address: response.data.content.Address,
           instagramLink: response.data.content.InstagramLink,
@@ -201,28 +199,29 @@ class Profile extends React.Component {
 
 
   handleContactClick = async (e) => {
-    // Get the contact information from the website
     var contact = {
       name: this.state.name,
-      phone: this.state.phone,
+      phoneNumbers: this.state.phoneNumbers,
       email: this.state.email,
       occupation: this.state.occupation,
       address: this.state.address
     };
 
-    // Create the vCard content
+    const telLines = contact.phoneNumbers
+      .map(p => 'TEL;TYPE=cell:' + p.Number)
+      .join('\n')
+
     var vcardContent =
       'BEGIN:VCARD\n' +
       'VERSION:3.0\n' +
       'N:' + contact.name + '\n' +
-      'TEL;TYPE=work,voice:' + contact.phone + '\n' +
+      telLines + '\n' +
       'EMAIL:' + contact.email + '\n' +
       'ROLE:' + contact.occupation + '\n' +
       'TITLE:' + contact.occupation + '\n' +
       'ADR:' + contact.address + '\n' +
       'END:VCARD';
 
-    // Create a Blob from the vCard content
     var blob = new Blob([vcardContent], {type: 'text/vcard'});
     var url = URL.createObjectURL(blob);
 
@@ -255,7 +254,10 @@ class Profile extends React.Component {
             <div style={{width: '500px'}} className="pb-5">
 
               {/* START OF WHATSAPP FLOATING BUTTON */}
-              {this.state.linkToWhatsapp && <WhatsAppButton phoneNumber={this.state.phone}/>}
+              {(() => {
+                const wa = this.state.phoneNumbers.find(p => p.LinkToWhatsapp)
+                return wa ? <WhatsAppButton phoneNumber={wa.Number}/> : null
+              })()}
               {/* END OF WHATSAPP FLOATING BUTTON */}
 
               {/* START OF PROFILE*/}
@@ -296,18 +298,24 @@ class Profile extends React.Component {
                     {section.content}
                   </p>))}
 
-                  <div className='mt-4'>
-                    <div className='d-flex align-items-center justify-content-start'>
-                      <div style={{width: '10%'}}>
-                        <div className='circle  d-flex align-items-center justify-content-center'
-                             style={{background: this.state.theme_color}}>
-                          <i className="fas fa-phone font-size-18" style={{color: 'white'}}></i>
+                  {this.state.phoneNumbers.map((p, index) => (
+                    <div key={index} className='mt-4'>
+                      <div className='d-flex align-items-center justify-content-start'>
+                        <div style={{width: '10%'}}>
+                          <div className='circle  d-flex align-items-center justify-content-center'
+                               style={{background: this.state.theme_color}}>
+                            <i className="fas fa-phone font-size-18" style={{color: 'white'}}></i>
+                          </div>
+                        </div>
+                        <div className='ml-3'>
+                          <p className="font-size-18 lato-regular mb-0" style={{color: '#252525'}}>{p.Number}</p>
+                          {p.Label && (
+                            <p className="font-size-14 lato-regular mb-0" style={{color: '#777'}}>{p.Label}</p>
+                          )}
                         </div>
                       </div>
-                      <p className="font-size-18 lato-regular mb-0 ml-3"
-                         style={{color: '#252525'}}>{this.state.phone}</p>
                     </div>
-                  </div>
+                  ))}
 
                   <div className='mt-4'>
                     <div className='d-flex align-items-center justify-content-start'>
