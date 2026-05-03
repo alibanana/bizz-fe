@@ -31,8 +31,7 @@ class Dashboard extends Component {
       name: null,
       occupation: null,
       bio: null,
-      phone: null,
-      linkToWhatsapp: false,
+      phoneNumbers: [],
       email: null,
       address: null,
       instagramLink: null,
@@ -85,6 +84,30 @@ class Dashboard extends Component {
     })
   }
 
+  addPhoneNumber = () => {
+    this.setState(prev => ({
+      phoneNumbers: [...prev.phoneNumbers, { Number: '', Label: '', LinkToWhatsapp: false }]
+    }))
+  }
+
+  removePhoneNumber = (index) => {
+    this.setState(prev => ({
+      phoneNumbers: prev.phoneNumbers.filter((_, i) => i !== index)
+    }))
+  }
+
+  onPhoneChange = (index, field, value) => {
+    this.setState(prev => {
+      const updated = prev.phoneNumbers.map((p, i) => {
+        if (field === 'LinkToWhatsapp' && value === true && i !== index) {
+          return { ...p, LinkToWhatsapp: false }
+        }
+        return i === index ? { ...p, [field]: value } : p
+      })
+      return { phoneNumbers: updated }
+    })
+  }
+
   getUserDetail = async (e) => {
     this.setState({
       isLoading: true
@@ -110,8 +133,7 @@ class Dashboard extends Component {
           name: response.data.content.Name,
           occupation: response.data.content.Occupation,
           bio: response.data.content.Bio,
-          phone: response.data.content.Phone,
-          linkToWhatsapp: response.data.content.LinkToWhatsapp,
+          phoneNumbers: response.data.content.PhoneNumbers ?? [],
           email: response.data.content.DisplayedEmail,
           address: response.data.content.Address,
           instagramLink: response.data.content.InstagramLink,
@@ -198,8 +220,7 @@ class Dashboard extends Component {
         "Name": this.state.name,
         "Occupation": this.state.occupation,
         "Bio": this.state.bio,
-        "Phone": this.state.phone,
-        "LinkToWhatsApp": this.state.linkToWhatsapp,
+        "PhoneNumbers": this.state.phoneNumbers.map(({ Number, Label, LinkToWhatsapp }) => ({ Number, Label, LinkToWhatsapp })),
         "Email": this.state.email,
         "Address": this.state.address,
         "InstagramLink": this.state.instagramLink,
@@ -519,21 +540,47 @@ class Dashboard extends Component {
                         </div>
                       </div>
 
-                      <div className='col-lg-6 col-md-6  col-xs-12 pt-3'>
-                        <div>
-                          {/*<label>Phone</label> <br></br>*/}
-                          <div className="d-flex justify-content-between align-items-center mb-2">
-                            <label className="mb-0">Phone</label>
-                            <div className="form-check form-switch mb-0">
-                              <input className="form-check-input" name="linkToWhatsapp" type="checkbox" role="switch"
-                                     id="whatsappToggle" checked={this.state.linkToWhatsapp}
-                                     onChange={this.onChange}/>
-                              <label className="form-check-label" htmlFor="whatsappToggle">Link to WhatsApp</label>
+                      <div className='col-12 pt-3'>
+                        <div className="d-flex justify-content-between align-items-center mb-2">
+                          <label className="mb-0">Phone Numbers</label>
+                          <button type="button" className="btn btn-sm btn-outline-secondary"
+                                  onClick={this.addPhoneNumber}>
+                            + Add Phone
+                          </button>
+                        </div>
+
+                        {this.state.phoneNumbers.map((p, index) => (
+                          <div key={index} className="border rounded p-2 mb-2">
+                            <div className="row">
+                              <div className="col-7">
+                                <input type="text" className="form-control form-control-sm mb-1"
+                                       placeholder="e.g. +628111377893"
+                                       value={p.Number}
+                                       onChange={e => this.onPhoneChange(index, 'Number', e.target.value)} />
+                                <input type="text" className="form-control form-control-sm"
+                                       placeholder="Label (e.g. Work, Personal)"
+                                       value={p.Label}
+                                       onChange={e => this.onPhoneChange(index, 'Label', e.target.value)} />
+                              </div>
+                              <div className="col-5 d-flex flex-column align-items-start justify-content-between">
+                                <div className="form-check form-switch">
+                                  <input className="form-check-input" type="checkbox" role="switch"
+                                         checked={p.LinkToWhatsapp}
+                                         onChange={e => this.onPhoneChange(index, 'LinkToWhatsapp', e.target.checked)} />
+                                  <label className="form-check-label">WhatsApp</label>
+                                </div>
+                                <button type="button" className="btn btn-sm btn-outline-danger mt-1"
+                                        onClick={() => this.removePhoneNumber(index)}>
+                                  Remove
+                                </button>
+                              </div>
                             </div>
                           </div>
-                          <input type="text" value={this.state.phone} onChange={this.onChange} name="phone"
-                                 className="form-control" placeholder="e.g. +628111377893" aria-label="phone_number"/>
-                        </div>
+                        ))}
+
+                        {this.state.phoneNumbers.length === 0 &&
+                          <p className="text-muted small">No phone numbers added.</p>
+                        }
                       </div>
 
                       <div className='col-lg-6 col-md-6 col-xs-12 pt-3'>
